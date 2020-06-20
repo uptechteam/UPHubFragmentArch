@@ -1,6 +1,6 @@
 # UPHubFragmentArch
 - Android Architecture Components
-    1. ~~Navigation~~ 
+    1. Navigation
     2. ViewModel
     3. LiveData
 - DI
