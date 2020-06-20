@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.test.uphubfragmentarch.ui.main.profile.ProfileViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{TextUtils.isEmpty(viewModel.user.login) ? View.GONE : View.VISIBLE}">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="@dimen/primaryImage"
+                    android:layout_height="@dimen/primaryImage"
+                    android:layout_margin="@dimen/defaultPadding"
+                    app:imageUrl="@{viewModel.user.avatarUrl}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_account" />
+
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/UpHubPrimaryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/defaultMargin"
+                    android:text="@{viewModel.user.name}"
+                    app:layout_constraintStart_toEndOf="@+id/avatar"
+                    app:layout_constraintTop_toTopOf="@+id/avatar"
+                    tools:text="Nikita Gordia" />
+
+                <TextView
+                    android:id="@+id/login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/mediumMargin"
+                    android:text="@{viewModel.user.login}"
+                    app:layout_constraintBottom_toBottomOf="@+id/name"
+                    app:layout_constraintStart_toEndOf="@+id/name"
+                    tools:text="NikitaGordia" />
+
+                <ImageView
+                    android:id="@+id/locationImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    android:src="@drawable/ic_location"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.user.location) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="@+id/name"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                <TextView
+                    android:id="@+id/locationTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/mediumMargin"
+                    android:maxLines="3"
+                    android:text="@{viewModel.user.location}"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.user.location) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/locationImage"
+                    app:layout_constraintStart_toEndOf="@+id/locationImage"
+                    app:layout_constraintTop_toTopOf="@+id/locationImage"
+                    tools:text="Kiev, Ukraine" />
+
+                <ImageView
+                    android:id="@+id/companyImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    android:src="@drawable/ic_job"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.user.company) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="@+id/locationImage"
+                    app:layout_constraintTop_toBottomOf="@+id/locationImage" />
+
+                <TextView
+                    android:id="@+id/companyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/mediumMargin"
+                    android:maxLines="3"
+                    android:text="@{viewModel.user.company}"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.user.company) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/companyImage"
+                    app:layout_constraintStart_toEndOf="@+id/companyImage"
+                    app:layout_constraintTop_toTopOf="@+id/companyImage"
+                    tools:text="Uptech" />
+
+                <ImageView
+                    android:id="@+id/emailImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    android:src="@drawable/ic_email"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.user.email) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="@+id/companyImage"
+                    app:layout_constraintTop_toBottomOf="@+id/companyImage" />
+
+                <TextView
+                    android:id="@+id/emailTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/mediumMargin"
+                    android:maxLines="3"
+                    android:text="@{viewModel.user.email}"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.user.email) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/emailImage"
+                    app:layout_constraintStart_toEndOf="@+id/emailImage"
+                    app:layout_constraintTop_toTopOf="@+id/emailImage"
+                    tools:text="nikita.gordia@gmail.com" />
+
+                <TextView
+                    android:id="@+id/bio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/mediumMargin"
+                    android:layout_marginEnd="@dimen/defaultMargin"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="5"
+                    android:text="@{viewModel.user.bio}"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.user.bio) ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/emailImage"
+                    app:layout_constraintTop_toBottomOf="@+id/emailTitle"
+                    tools:text="Android developer at Paytomat. A student of the National Technical University of Ukraine Igor Sikorsky Kyiv Polytechnic Institute. Android developer at Paytomat. A student of the National Technical University of Ukraine Igor Sikorsky Kyiv Polytechnic Institute" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/defaultPadding"
+                android:overScrollMode="never">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </androidx.viewpager.widget.ViewPager>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{TextUtils.isEmpty(viewModel.user.login) ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/secondaryImage"
+                android:layout_height="@dimen/secondaryImage"
+                android:src="@drawable/ic_no_auth" />
+
+            <TextView
+                style="@style/UpHubPrimaryMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mediumMargin"
+                android:text="@string/profile_empty" />
+
+            <Button
+                style="@style/UpHubPrimaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mediumMargin"
+                android:onClick="@{() -> viewModel.onSignIn()}"
+                android:text="@string/profile_sign_in" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.test.uphubfragmentarch.ui.login.LoginViewModel" />
+
+    </data>
+
+    <com.test.uphubfragmentarch.util.ProgressLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:progress="@{viewModel.progress}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/loginBackground"
+            android:gravity="center"
+            android:layout_gravity="bottom">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/largeMargin"
+                android:src="@drawable/ic_github"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:id="@+id/popup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/largeMargin"
+                android:layout_marginEnd="@dimen/largeMargin"
+                android:layout_weight="0"
+                android:alpha="0"
+                tools:alpha="1"
+                tools:translationY="0dp"
+                android:translationY="@dimen/defaultTranslationY"
+                android:focusableInTouchMode="true"
+                android:background="@drawable/background_login_form"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:src="@drawable/ic_uphub"
+                    android:layout_marginTop="@dimen/largeMargin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/login_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/defaultMargin"
+                    android:layout_marginTop="@dimen/defaultMargin"
+                    android:layout_marginRight="@dimen/defaultMargin"
+                    android:hint="@string/login_field_login"
+                    app:errorEnabled="true"
+                    app:hintEnabled="true">
+
+                    <EditText
+                        style="@style/UpHubInput"
+                        android:id="@+id/login_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:text="@={viewModel.login}"
+                        android:maxLength="32" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/pass_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_marginLeft="@dimen/defaultMargin"
+                    android:layout_marginRight="@dimen/defaultMargin"
+                    android:hint="@string/login_field_password"
+                    app:errorEnabled="true"
+                    app:hintEnabled="true">
+
+                    <EditText
+                        style="@style/UpHubInput"
+                        android:id="@+id/pass_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:text="@={viewModel.password}"
+                        android:maxLength="64" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    style="@style/UpHubPrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_marginStart="@dimen/defaultPadding"
+                    android:layout_marginEnd="@dimen/defaultPadding"
+                    android:layout_marginBottom="@dimen/defaultMargin"
+                    android:onClick="@{() -> viewModel.onSignUp()}"
+                    android:text="@string/login_field_sign_up" />
+
+            </LinearLayout>
+
+            <Button
+                style="@style/UpHubSecondaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_field_skip"
+                android:layout_weight="0"
+                android:onClick="@{() -> viewModel.onSkipPressed()}"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/defaultMargin"/>
+
+        </LinearLayout>
+
+    </com.test.uphubfragmentarch.util.ProgressLayout>
+
+</layout>

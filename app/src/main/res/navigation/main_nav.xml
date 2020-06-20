@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/repository">
+
+    <fragment
+        android:id="@+id/repository"
+        android:name="com.test.uphubfragmentarch.ui.main.repository.RepositoryFragment"
+        android:label="RepositoryFragment"
+        tools:layout="@layout/fragment_repository" />
+
+    <fragment
+        android:id="@+id/user"
+        android:name="com.test.uphubfragmentarch.ui.main.user.UserFragment"
+        android:label="UserFragment"
+        tools:layout="@layout/fragment_user">
+        <!--        <action-->
+        <!--            android:id="@+id/action_to_profile_view"-->
+        <!--            app:destination="@id/profile_view">-->
+        <!--            <argument-->
+        <!--                android:name="userId"-->
+        <!--                android:defaultValue="-1"-->
+        <!--                app:argType="integer" />-->
+        <!--        </action>-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_view"
+        android:name="com.test.uphubfragmentarch.ui.main.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
+
+</navigation>

@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">UpHub</string>
+
+    <!--Main activity-->
+    <string name="main_repos">Repositories</string>
+    <string name="main_users">Users</string>
+    <string name="main_profile">Profile</string>
+
+    <!--Repository-->
+    <string name="repository_is_fork">Is fork</string>
+    <string name="repository_is_private">Is private</string>
+
+    <!--Login-->
+    <string name="login_field_login">Login</string>
+    <string name="login_field_password">Password</string>
+    <string name="login_field_sign_up">Sign in</string>
+    <string name="login_field_skip">Skip</string>
+    <string name="login_error_creds">Probably invalid field</string>
+
+    <!--Profile-->
+    <string name="profile_empty">You aren\'t authenticated</string>
+    <string name="profile_sign_in">Sign in</string>
+    <string name="profile_repos">Repositories (%s)</string>
+    <string name="profile_follow">Followers (%s)</string>
+    <string name="profile_subscr">Subscriptions (%s)</string>
+
+    <!--Common-->
+    <string name="common_error_smth_went_wrong">Something went wrong</string>
+    <string name="common_error_no_connection">No internet connection</string>
+    <string name="common_empty_list">Looks like it\'s empty(</string>
+    <string name="common_refresh">Refresh</string>
+</resources>

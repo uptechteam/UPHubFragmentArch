@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3D4146</color>
+    <color name="colorPrimaryDark">#212326</color>
+    <color name="colorAccent">#4A9347</color>
+
+    <color name="textPrimary">#000000</color>
+    <color name="background">#FAFBFC</color>
+
+    <color name="gradientStart">#37000000</color>
+    <color name="gradientEnd">#00000000</color>
+
+    <color name="loginBackground">#2C3136</color>
+    <color name="loginFormOutline">#D2D5DA</color>
+
+    <color name="progressDim">#603D4146</color>
+    <color name="progressDimFul">#FFFFFF</color>
+</resources>

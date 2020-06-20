@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="model"
+            type="com.test.uphubfragmentarch.ui.main.user.UserUI" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/defaultPadding">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/secondaryImage"
+            android:layout_height="@dimen/secondaryImage"
+            app:imageUrl="@{model.avatarUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_account" />
+
+        <TextView
+            android:id="@+id/nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultMargin"
+            android:text="@{model.name}"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            tools:text="Nikita Gordia" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mediumMargin"
+            android:text="@{model.login}"
+            app:layout_constraintBottom_toBottomOf="@+id/nick"
+            app:layout_constraintStart_toEndOf="@+id/nick"
+            tools:text="NikitaGordia" />
+
+        <TextView
+            android:id="@+id/bio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_marginEnd="@dimen/mediumMargin"
+            android:lines="1"
+            android:text="@{model.bio}"
+            android:visibility="@{TextUtils.isEmpty(model.bio) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/nick"
+            app:layout_constraintTop_toBottomOf="@+id/nick"
+            tools:text="Student at Kyiv Polytechnic Institute" />
+
+        <ImageView
+            android:id="@+id/locImage"
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:src="@drawable/ic_location"
+            android:visibility="@{TextUtils.isEmpty(model.location) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/nick"
+            app:layout_constraintTop_toBottomOf="@+id/bio" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/smallMargin"
+            android:lines="1"
+            android:text="@{model.location}"
+            android:visibility="@{TextUtils.isEmpty(model.location) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/locImage"
+            app:layout_constraintStart_toEndOf="@+id/locImage"
+            app:layout_constraintTop_toTopOf="@+id/locImage"
+            tools:text="Student at Kyiv Polytechnic Institute" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

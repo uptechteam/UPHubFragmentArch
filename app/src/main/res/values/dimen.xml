@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="largePadding">24dp</dimen>
+    <dimen name="defaultPadding">16dp</dimen>
+
+    <dimen name="largeMargin">24dp</dimen>
+    <dimen name="defaultMargin">16dp</dimen>
+    <dimen name="mediumMargin">8dp</dimen>
+    <dimen name="smallMargin">4dp</dimen>
+
+    <dimen name="primaryImage">96dp</dimen>
+    <dimen name="secondaryImage">64dp</dimen>
+
+    <dimen name="defaultTranslationY">64dp</dimen>
+    <dimen name="shadowWidth">6dp</dimen>
+    <dimen name="iconSize">24dp</dimen>
+
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.test.uphubfragmentarch.ui.main.user.UserViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/mediumMargin"
+            android:layout_marginBottom="@dimen/mediumMargin"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:src="@drawable/ic_uphub" />
+
+        <EditText
+            style="@style/UpHubInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mediumMargin"
+            android:layout_marginEnd="@dimen/mediumMargin"
+            android:drawableStart="@drawable/ic_search"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@={viewModel.search}"
+            tools:text="UpHub" />
+
+        <com.test.uphubfragmentarch.util.ProgressRecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:progress="@{viewModel.globalProgress}" />
+
+    </LinearLayout>
+
+</layout>
