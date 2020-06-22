@@ -42,6 +42,7 @@ class HostInjector(
                     hostActivity
                 )
                 f.childFragmentManager.registerFragmentLifecycleCallbacks(loginInjector!!, false)
+                super.onFragmentAttached(fm, f, context)
             }
             is FragmentMain -> {
                 val mainComponent = MainComponent.invoke()
@@ -52,6 +53,7 @@ class HostInjector(
                     hostActivity
                 )
                 f.childFragmentManager.registerFragmentLifecycleCallbacks(mainInjector!!, true)
+                super.onFragmentAttached(fm, f, context)
             }
         }
     }
