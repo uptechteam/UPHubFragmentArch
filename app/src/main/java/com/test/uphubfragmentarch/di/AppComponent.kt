@@ -6,9 +6,11 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.room.Room
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
+import com.test.uphubfragmentarch.R
 import com.test.uphubfragmentarch.data.AndroidResources
 import com.test.uphubfragmentarch.data.Resources
 import com.test.uphubfragmentarch.data.UserPreferences
@@ -59,8 +61,14 @@ abstract class AppComponent : Application.ActivityLifecycleCallbacks {
             is HostActivity -> {
                 val vm = ViewModelProvider(activity, vmFactory)[HostViewModel::class.java]
                 val injector = HostInjector(vmFactory, activity)
-                activity.supportFragmentManager.registerFragmentLifecycleCallbacks(injector, true)
-                activity.initActivity(vm)
+                with(activity) {
+                    supportFragmentManager.registerFragmentLifecycleCallbacks(injector, true)
+                    setContentView(R.layout.activity_host)
+                    with(supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment) {
+                        navController.addOnDestinationChangedListener(injector)
+                    }
+                    initActivity(vm)
+                }
             }
         }
     }

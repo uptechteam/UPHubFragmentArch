@@ -11,13 +11,8 @@ import com.test.uphubfragmentarch.util.observe
 import kotlinx.android.synthetic.main.activity_host.*
 
 class HostActivity : BaseActivity<HostViewModel>() {
-
-    private lateinit var navigator: Navigator<HostRoute>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_host)
-        navigator = HostCoordinator(fragmentContainer.findNavController())
 
         observe(viewModel.route) {
 //            navigator.navigate(it)
@@ -25,7 +20,7 @@ class HostActivity : BaseActivity<HostViewModel>() {
     }
 
     override fun onBackPressed() {
-        if (!navigator.popBackStack()) {
+        if (!viewModel.onBackPressed()) {
             super.onBackPressed()
         }
     }

@@ -7,8 +7,12 @@ import com.test.uphubfragmentarch.ui.BaseViewModel
 import javax.inject.Inject
 
 class HostViewModel @Inject constructor(
-    private val userPreferences: UserPreferences
+    private val userPreferences: UserPreferences,
+    private val coordinator: HostCoordinator
 ) : BaseViewModel() {
+    fun onBackPressed(): Boolean {
+        return coordinator.popBackStack()
+    }
 
     val route: LiveData<HostRoute> = userPreferences
         .hideLogin.map {

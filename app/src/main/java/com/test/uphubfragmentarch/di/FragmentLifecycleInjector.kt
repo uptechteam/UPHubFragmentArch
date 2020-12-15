@@ -11,7 +11,7 @@ import com.test.uphubfragmentarch.ui.BaseViewModel
 import java.lang.reflect.ParameterizedType
 
 open class FragmentLifecycleInjector(
-    val viewModelFactory: ViewModelProvider.Factory
+    private val viewModelFactory: ViewModelProvider.Factory
 ) : FragmentManager.FragmentLifecycleCallbacks() {
 
     @Suppress("UNCHECKED_CAST")
@@ -21,7 +21,7 @@ open class FragmentLifecycleInjector(
             val clazz = getViewModelClazz(this)
             val vm = ViewModelProvider(
                 getViewModelStoreOwner(f),
-                getViewModelFactory(f)
+                viewModelFactory
             )[clazz]
             doInject(this, vm as BaseViewModel)
         }
@@ -39,9 +39,9 @@ open class FragmentLifecycleInjector(
         return injectingFragment
     }
 
-    open fun getViewModelFactory(injectingFragment: Fragment): ViewModelProvider.Factory {
-        return viewModelFactory
-    }
+//    open fun getViewModelFactory(injectingFragment: Fragment): ViewModelProvider.Factory {
+//        return viewModelFactory
+//    }
 
     open fun getViewModelClazz(injectingFragment: Fragment): Class<out ViewModel> {
         val fragmentClass = injectingFragment::class.java

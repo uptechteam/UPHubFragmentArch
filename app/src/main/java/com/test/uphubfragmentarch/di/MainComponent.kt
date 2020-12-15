@@ -33,7 +33,6 @@ import kotlin.coroutines.CoroutineContext
 abstract class MainComponent {
     @Main
     abstract fun vmFactory() : ViewModelProvider.Factory
-
     abstract val mainCoordinator: MainCoordinator
 
     @Subcomponent.Factory
